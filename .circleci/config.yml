@@ -41,7 +41,7 @@ jobs: # A basic unit of work in a run
           path: test-results
           destination: tr1
   build:
-    executor: docker-publisher
+    executor: docker
     environment:
       IMAGE_NAME: matteob99/django-test
     docker:
@@ -61,7 +61,7 @@ jobs: # A basic unit of work in a run
           paths:
             3- ./image.tar
   publish-latest:
-    executor: docker-publisher
+    executor: docker
     steps:
       - attach_workspace:
           at: /tmp/workspace
