@@ -1,4 +1,4 @@
-version: 2 # use CircleCI 2.0
+version: 2.1
 jobs: # A basic unit of work in a run
   test: # runs not using Workflows must have a `build` job as entry point
     # directory where steps are run
@@ -41,7 +41,7 @@ jobs: # A basic unit of work in a run
           path: test-results
           destination: tr1
   build:
-    executor: docker
+    executor: docker-publisher
     environment:
       IMAGE_NAME: matteob99/django-test
     docker:
@@ -61,7 +61,7 @@ jobs: # A basic unit of work in a run
           paths:
             3- ./image.tar
   publish-latest:
-    executor: docker
+    executor: docker-publisher
     steps:
       - attach_workspace:
           at: /tmp/workspace
